@@ -1,27 +1,20 @@
-"use strict"
-var Temperatura = require("./Temperatura.js");
+(function(calculates) {
 
-class Kelvin extends Temperatura {
-  constructor(temp){
-    if(Temperatura.type(temp) == 3){
-      super(temp);
-    }
+  var k = {};
+
+  k.k = function(val) {
+    return val;
   }
 
-  convertir() {
-    if(super.getCover.match(/[Cc]/)){
-      this.resultado = super.getValor - 273.15;
-    }
-    else{
-      if(super.getCover.match(/[Ff]/)){
-        this.resultado = ((super.getValor - 273.15) * (9/5))+32;
-      }
-      else{
-        this.resultado = super.getValor;
-      }
-    }
-    return this.resultado
+  k.c = function(val) {
+    return val - 273.15;
   }
-}
 
-module.exports = Kelvin;
+  k.f = function(val) {
+    return ((val - 273.15) * (9/5))+32;
+  }
+
+  calculates.k = k;
+  calculates.K = k;
+
+} (magnitud.calculates = magnitud.calculates || {}))

@@ -1,27 +1,19 @@
-"use strict"
-var Temperatura = require("./Temperatura.js");
+(function(calculates) {
 
+  var f = {}
 
-class Farenheit extends Temperatura {
-  constructor(temp){
-    if(Temperatura.type(temp) == 2){
-      super(temp);
-    }
+  f.k = function(val) {
+    return ((val-32) * (5/9)) + 273.15;
   }
 
-  convertir(){
-    if(super.getCover.match(/[Cc]/)){
-      this.resultado = (super.getValor-32) * (5/9);
-    }
-    else{
-      if(super.getCover.match(/[Ff]/)){
-        this.resultado = super.getValor;
-      }
-      else{
-        this.resultado = ((super.getValor-32) * (5/9)) + 273.15;
-      }
-    }
-    return this.resultado;
+  f.c = function(val) {
+    return (val-32) * (5/9);
   }
-}
-module.exports = Farenheit;
+
+  f.f = function(val) {
+    return val;
+  }
+
+  calculates.f = f;
+  calculates.F = f;
+} (magnitud.calculates = magnitud.calculates || {}))

@@ -1,37 +1,43 @@
 "use strict"
 
 class Medida {
+
   constructor(temp) {
-    let array = temp.match(/([-+]?\d+(?:\.\d+)?)\s*([FfCcKkMmPp])\s*(?:to)?\s*([FfCcKkMmPp])\s*$/)
+
+    this.int = temp;
+    this.magnitud = {};
+
+    let array = temp.match(/([-+]?\d+(?:\.\d+)?)\s*([A-Za-z])\s*(?:to)?\s*([A-Za-z])\s*$/)
+
     if(array[1]){ this.valor = array[1]; }
-    if(array[2]){ this.tipo = array[2]; }
-    if(array[3]){ this.cover = array[3]; }
+    if(array[2]){ this.tipo = array[2].toLowerCase(); }
+    if(array[3]){ this.cover = array[3].toLowerCase(); }
+
   }
 
-  static type(temp){
-    var array = temp.match(/([-+]?\d+(?:\.\d+)?)\s*([FfCcKkMmPp])\s*(?:to)?\s*([FfCcKkMmPp])\s*$/);
-    var typ = 0;
-    if(array != null){
-      if(array[2].match(/[FfCcKkMmPp]/) && array[3].match(/[FfCcKkMmPp]/)) {
-        if(array[2].match(/[FfCcKk]/)) {
-          typ = 1;
-        }
-        else {
-          typ = 2;
-        }
-      }
-      else {
-        console.log("Expresión inválida.")
-      }
+  convertir(magnitud, mymedida) {
+    
+    try {
+      this.magnitud = mymedida;
+  
+      var calculadora = new this.magnitud[this.tipo](this.int);
+  
+      converted.innerHTML = this.tipo;
+      console.log(this.tipo);
+      console.log(this.int);
+  
+      calculadora.setCalculate(magnitud);
+  
+      return calculadora.calcular(this.cover);
+      
+    } catch(err){
+      return "ERROR! Introduce algo como '-30C to K' o '20f c'";
     }
-    else{
-      console.log("Expresión inválida.")
-    }
-    return typ;
+    
   }
+
   get getValor() { return this.valor }
   get getTipo() { return this.tipo }
   get getCover() { return this.cover }
-}
 
-module.exports = Medida;
+}
