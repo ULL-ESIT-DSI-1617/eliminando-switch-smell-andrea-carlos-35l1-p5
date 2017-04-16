@@ -2,10 +2,6 @@ var gulp = require('gulp');
 var shell = require('gulp-shell');
 var ghPages = require('gulp-gh-pages');
 
-gulp.task('build', shell.task(
-'gitbook build docs public'
-));
-
 gulp.task('deploy', function() {
 return gulp.src('./conversor/**/*')
 .pipe(ghPages());
