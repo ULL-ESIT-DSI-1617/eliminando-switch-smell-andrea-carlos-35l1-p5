@@ -7,7 +7,7 @@ gulp.task('build', shell.task(
 ));
 
 gulp.task('deploy', function() {
-return gulp.src('./conversor/*')
+return gulp.src('./conversor/**/*')
 .pipe(ghPages());
 });
 
