@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <title>JavaScript Temperature Converter</title>
+     <link href="css/normalize.css" rel="stylesheet" type="text/css">
+     <link href="css/global.css" rel="stylesheet" type="text/css">
+
+
+  </head>
+  <body>
+    <h1>Calculadora</h1>
+    <table>
+      <tr>
+        <th>Introducir valores (ejemplos: 32f to c, 45C k, 2m to p (las letras en minúscula))</th>
+        <td><input id="original" autofocus onchange="main();" placeholder="32F" size="50"></td>
+      </tr>
+      <script type="text/javascript" src="./src/Medida.js"></script>
+      <script type="text/javascript" src="./src/main.js"></script>
+      <script type="text/javascript" src="./src/Magnitudes.js"></script>
+      <script type="text/javascript" src="./src/Temperaturas.js"></script>
+      <script type="text/javascript" src="./src/Kelvin.js"></script>
+      <script type="text/javascript" src="./src/Celsius.js"></script>
+      <script type="text/javascript" src="./src/Farenheit.js"></script>
+
+      <tr>
+        <th>Resultado: </th>
+        <td><span class="output" id="converted"></span></td>
+      </tr>
+    </table>
+  </body>
+</html>
