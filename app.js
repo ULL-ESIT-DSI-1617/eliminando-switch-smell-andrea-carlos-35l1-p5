@@ -8,7 +8,8 @@ var session = require('express-session');
 var file = './user.json'
 var jsonfile = require('jsonfile');
 var users = require('./user.json');
-//permite coger parámetros de la url(query string)
+
+//Permite coger parámetros de la url(query string)
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(session({
@@ -16,10 +17,6 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-
-//var registrar = function(user, pass){
-//  users[user] = bcrypt.hashSync(pass);
-//}
 
 //Comprueba si ya esta autorizado en esta sesion
 var auth = function(req, res, next) {
@@ -52,28 +49,6 @@ jsonfile.writeFile(file, users, {spaces: 2}, (err)=>{
 	console.error(err);
 });
 
-/*app.get('/registrar', function(req, res){
-  res.render('registrar')
-})
-
-app.post('/registrar', function(req, res){
-  if (!req.body.username || !req.body.password) {
-    console.log('registrar failed');
-      res.render('registrar');
-  } else if(req.body.username in users) {
-
-    console.log('registrado fallido');
-    res.render('registrar');
-  } else {
-    registrar(req.body.username, req.body.password)
-    res.render('noautentificado', { message: 'Registro completado satisfactoriamente.' } );
-
-    jsonfile.writeFile(file, users, {spaces: 2}, (err)=>{
-      console.error(err);
-    });
-  }
-})*/
-
 //Obtiene la respuesta del formulario y comprueba si es correcto
 app.post('/login', function(req, res){
     if (!req.body.username || !req.body.password) {
@@ -90,13 +65,14 @@ app.post('/login', function(req, res){
       res.render('noautentificado', { message: 'Login Failed' } );
     }
   });
+
   //Borra la sesion.
   app.get('/logout', function (req, res) {
     req.session.destroy();
     res.render('noautentificado', { message: 'Sesion cerrada correctamente.' } );
   });
 
-app.use('/content',auth, express.static(path.join(__dirname, 'public')));
+app.use('/content',auth, express.static(path.join(__dirname, 'conversor')));
 
   var server = app.listen(process.env.PORT || 8087, ()=> {
 	var host = server.address().address
